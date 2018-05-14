@@ -1,0 +1,10 @@
+{
+  "name": "go-web-app",
+  "version": "1.0.0",
+  "description": "Bokjo's first go web app test",
+  "main": "index.js",
+  "repository": "https://github.com/bokjo/go-web-app.git",
+  "author": "Bojanche Stojchevski",
+  "license": "MIT",
+  "private": false
+}
