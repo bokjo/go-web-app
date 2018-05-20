@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lemonade Stand Supply</title>
+    <link href="/css/app.css" rel="stylesheet" />
+    {{block "styles" .}}{{end}}
+</head>
+
+<body>
+    
+    <!-- HEADER -->
+    {{template "_header.html"}}
+    <!-- HEADER END -->
+    
+    {{ template "content"}}
+    
+    <!-- FOOTER -->
+    {{template "_footer.html"}}
+    <!-- FOOTER END -->
+    
+    {{block "scripts" .}}{{end}}
+</body>
+
+</html>

@@ -14,3 +14,8 @@
 
 # Front end stuff
 /node_modules
+
+debug
+
+# Editor specific - VSCode
+.vscode
