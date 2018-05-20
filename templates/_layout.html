@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Lemonade Stand Supply</title>
+    <title>{{.Title}}</title>
     <link href="/css/app.css" rel="stylesheet" />
     {{block "styles" .}}{{end}}
 </head>
@@ -10,13 +10,13 @@
 <body>
     
     <!-- HEADER -->
-    {{template "_header.html"}}
+    {{template "_header.html" .}}
     <!-- HEADER END -->
     
-    {{ template "content"}}
+    {{ template "content" .}}
     
     <!-- FOOTER -->
-    {{template "_footer.html"}}
+    {{template "_footer.html" .}}
     <!-- FOOTER END -->
     
     {{block "scripts" .}}{{end}}

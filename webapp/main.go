@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/bokjo/go-web-app/webapp/viewmodel"
 )
 
 func main() {
@@ -16,8 +18,17 @@ func main() {
 
 		template := templates[requestedFile+".html"]
 
+		var context interface{}
+
+		switch requestedFile {
+		case "shop":
+			context = viewmodel.NewShop()
+		default:
+			context = viewmodel.NewBase()
+		}
+
 		if template != nil {
-			err := template.Execute(w, nil)
+			err := template.Execute(w, context)
 			if err != nil {
 				log.Println(err)
 			}
