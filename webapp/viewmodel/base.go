@@ -2,12 +2,14 @@ package viewmodel
 
 // Base type
 type Base struct {
-	Title string
+	Active string
+	Title  string
 }
 
 // NewBase constructor function
 func NewBase() Base {
 	return Base{
-		Title: "Lemonade Stand Supply",
+		Active: "home",
+		Title:  "Lemonade Stand Supply",
 	}
 }

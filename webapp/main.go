@@ -23,6 +23,8 @@ func main() {
 		switch requestedFile {
 		case "shop":
 			context = viewmodel.NewShop()
+		case "stand_locator":
+			context = viewmodel.NewStandLocator()
 		default:
 			context = viewmodel.NewBase()
 		}
