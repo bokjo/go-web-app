@@ -3,45 +3,16 @@ package main
 import (
 	"html/template"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 
-	"github.com/bokjo/go-web-app/webapp/viewmodel"
+	"github.com/bokjo/go-web-app/webapp/controllers"
 )
 
 func main() {
 	templates := populateTemplates()
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		requestedFile := r.URL.Path[1:]
-
-		template := templates[requestedFile+".html"]
-
-		var context interface{}
-
-		switch requestedFile {
-		case "shop":
-			context = viewmodel.NewShop()
-		case "stand_locator":
-			context = viewmodel.NewStandLocator()
-		default:
-			context = viewmodel.NewBase()
-		}
-
-		if template != nil {
-			err := template.Execute(w, context)
-			if err != nil {
-				log.Println(err)
-			}
-		} else {
-			w.WriteHeader(http.StatusNotFound)
-		}
-
-	})
-
-	http.Handle("/img/", http.FileServer(http.Dir("../public")))
-	http.Handle("/css/", http.FileServer(http.Dir("../public")))
+	controllers.Startup(templates)
 
 	http.ListenAndServe(":1234", nil)
 }
