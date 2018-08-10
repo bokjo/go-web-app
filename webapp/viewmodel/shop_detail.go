@@ -1,5 +1,9 @@
 package viewmodel
 
+import (
+	"github.com/bokjo/go-web-app/webapp/model"
+)
+
 // ShopDetail struct
 type ShopDetail struct {
 	Title    string
@@ -8,19 +12,17 @@ type ShopDetail struct {
 }
 
 // NewShopDetail - () - function
-func NewShopDetail() ShopDetail {
-	var result ShopDetail
-	result.Active = "shop"
-	result.Title = "Lemonade Stand Supply - Juice Shop"
-	lemonJuice := MakeLemonJuiceProduct()
-	appleJuice := MakeAppleJuiceProduct()
-	watermelonJuice := MakeWatermelonJuiceProduct()
-	kiwiJuice := MakeKiwiJuiceProduct()
-	mangosteenJuice := MakeMangosteenJuiceProduct()
-	orangeJuice := MakeOrangeJuiceProduct()
-	pineappleJuice := MakePineappleJuiceProduct()
-	strawberryJuice := MakeStrawberryJuiceProduct()
-	result.Products = []Product{lemonJuice, appleJuice, watermelonJuice,
-		kiwiJuice, mangosteenJuice, orangeJuice, pineappleJuice, strawberryJuice}
+func NewShopDetail(products []model.Product) ShopDetail {
+
+	result := ShopDetail{
+		Active:   "shop",
+		Title:    "Lemonade Stand Supply",
+		Products: []Product{},
+	}
+
+	for _, p := range products {
+		result.Products = append(result.Products, productToVM(&p))
+	}
+
 	return result
 }

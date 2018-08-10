@@ -14,6 +14,7 @@ type home struct {
 func (h home) registerRoutes() {
 	http.HandleFunc("/home", h.handleHome)
 	http.HandleFunc("/", h.handleHome)
+	//http.HandleFunc("/login", h.handleLogin)
 }
 
 func (h home) handleHome(w http.ResponseWriter, r *http.Request) {
