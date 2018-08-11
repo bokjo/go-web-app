@@ -3,21 +3,21 @@
 	<div class="columns small-6 small-offset-3">
 		<fieldset>
 			<legend>Login</legend>
-			<form action="/home" method="post" class="row">
+			<form action="/login" method="post" class="row">
 				<div class="row">
 					<div class="columns small-6 text-right">
-						email
+						<label for="email">Email</label>
 					</div>
 					<div class="columns small-6">
-						<input type="text" name="email" />
+						<input type="email" name="email" value="{{.Email}}" required pattern="[^]+@[^]+[.][a-z]{2,63}$" autocomplete="email"/>
 					</div>
 				</div>
 				<div class="row">
 					<div class="columns small-6 text-right">
-						password
+						<label for="password">Password</label>
 					</div>
 					<div class="columns small-6">
-						<input type="password" name="password" />
+						<input required="" type="password" name="password" value="{{.Password}}" required minlength="8" aria-describedby="passwordHint" autocomplete="current-password" />
 					</div>
 				</div>
 				<div class="row">
