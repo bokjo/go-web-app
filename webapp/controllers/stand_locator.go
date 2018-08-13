@@ -22,6 +22,7 @@ func (sl standLocator) registerRoutes() {
 func (sl standLocator) handleStandLocator(w http.ResponseWriter, r *http.Request) {
 	standLocatorVM := viewmodel.NewStandLocator()
 
+	w.Header().Add("Content-Type", "text/html")
 	sl.standLocatorTemplate.Execute(w, standLocatorVM)
 }
 

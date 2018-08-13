@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/bokjo/go-web-app/webapp/controllers"
+	"github.com/bokjo/go-web-app/webapp/middleware"
 )
 
 func main() {
@@ -14,7 +15,7 @@ func main() {
 
 	controllers.Startup(templates)
 
-	http.ListenAndServe(":1234", nil)
+	http.ListenAndServe(":1234", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
 }
 
 func populateTemplates() map[string]*template.Template {

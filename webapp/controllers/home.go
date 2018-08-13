@@ -22,6 +22,10 @@ func (h home) registerRoutes() {
 
 func (h home) handleHome(w http.ResponseWriter, r *http.Request) {
 	homeVM := viewmodel.NewBase()
+	w.Header().Add("Content-Type", "text/html")
+
+	// TEST middleware timeout
+	// time.Sleep(4 * time.Second)
 
 	h.homeTemplate.Execute(w, homeVM)
 }
@@ -50,5 +54,6 @@ func (h home) handleLogin(w http.ResponseWriter, r *http.Request) {
 
 	}
 
+	w.Header().Add("Content-Type", "text/html")
 	h.loginTemplate.Execute(w, loginVM)
 }
