@@ -19,3 +19,6 @@ debug
 
 # Editor specific - VSCode
 .vscode
+
+#SSH cert keys
+*.pem

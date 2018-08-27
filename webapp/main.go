@@ -24,7 +24,7 @@ func main() {
 
 	controllers.Startup(templates)
 
-	http.ListenAndServe(":1234", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
+	http.ListenAndServeTLS(":1234", "cert.pem", "key.pem", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
 }
 
 func connectToDB() *sql.DB {
