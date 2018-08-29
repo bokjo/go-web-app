@@ -13,6 +13,8 @@ import (
 	"github.com/bokjo/go-web-app/webapp/middleware"
 	"github.com/bokjo/go-web-app/webapp/model"
 
+	_ "net/http/pprof"
+
 	_ "github.com/lib/pq"
 )
 
@@ -23,7 +25,7 @@ func main() {
 	defer db.Close()
 
 	controllers.Startup(templates)
-
+	go http.ListenAndServe(":4321", nil)
 	http.ListenAndServeTLS(":1234", "cert.pem", "key.pem", &middleware.TimeoutMiddleware{new(middleware.GzipMiddleware)})
 }
 
